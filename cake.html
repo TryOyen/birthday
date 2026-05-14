@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Cake</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background" aria-hidden="true">
+    <div class="balloon balloon-1"></div>
+    <div class="balloon balloon-2"></div>
+    <div class="balloon balloon-3"></div>
+  </div>
+
+  <div class="container">
+    <h1>Happy Birthday!</h1>
+    <h2 class="description">For you Ameyyyyy</h2>
+    <p>klik kue nyaaa</p>
+    
+    <div class="cake">
+      <div class="plate"></div>
+      <div class="tier tier-bottom"></div>
+      <div class="tier tier-top"></div>
+      <div class="frosting"></div>
+      <div class="candle candle-1"><div class="flame"></div></div>
+      <div class="candle candle-2"><div class="flame"></div></div>
+      <div class="candle candle-3"><div class="flame"></div></div>
+    </div>
+
+    <audio id="birthday-audio" src="Ultahpiano.mp3" preload="auto"></audio>
+
+    <p class="hint"><a href="index.html">Kembali ke surat ucapan</a></p>
+  </div>
+
+  <script>
+    const cake = document.querySelector('.cake');
+    const flames = document.querySelectorAll('.flame');
+    const audio = document.getElementById('birthday-audio');
+
+    function toggleFlames() {
+      flames.forEach((flame) => flame.classList.toggle('off'));
+    }
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    if (cake) {
+      cake.addEventListener('click', () => {
+        toggleFlames();
+        toggleAudio();
+      });
+      cake.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggleFlames();
+        }
+      });
+      cake.tabIndex = 0;
+    }
+  </script>
+</body>
+</html>
